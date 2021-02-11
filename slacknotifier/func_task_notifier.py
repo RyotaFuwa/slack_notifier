@@ -3,14 +3,15 @@ import requests
 import functools
 from datetime import datetime
 
-os.environ['DEFAULT_SLACK_FUNCTION_TASK_NOTIFIER_URL'] = "https://hooks.slack.com/services/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"
 default_url = os.environ['DEFAULT_SLACK_FUNCTION_TASK_NOTIFIER_URL']
 
 
+# TODO: fix a problem to connect to Slack for some reason
 def send_message_to(msg, app_url=default_url):
   try:
     res = requests.post(app_url, json={"text": msg})
     if res.status_code != 200:
+      print(res.status_code)
       raise RuntimeError
   except RuntimeError as e:
     print("Report to Slack failed.")
@@ -86,3 +87,13 @@ class FuncTaskNotifier:
   def __exit__(self, exc_type, exc_val, exc_tb):
     if self.notify_end:
       self.notify(self.app_url, 'end')
+      
+      
+if __name__ == '__main__':
+  import time
+  
+  @FuncTaskNotifier()
+  def sleep():
+    time.sleep(1)
+  
+  sleep()
