@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="slack_notifier-imax2218", # Replace with your own username
+    name="slack_notifier_0-imax2218", # Replace with your own username
     version="0.0.1",
     author="Imax 2218",
     author_email="imax2218@gmail.com",

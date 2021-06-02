@@ -20,17 +20,6 @@ URL for your workspace.
 
 ## Usage
 
-```python
-from slacknotifier import FuncTaskNotifier
-ftn = FuncTaskNotifier()
-
-def task():
-    """any task as a function """
-
-ftn.attach_task(task)
-ftn.run() # notify you on slack when the task is finished
-```
-
 - With Statement  
 ```python
 from slacknotifier import FuncTaskNotifier
